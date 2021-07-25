@@ -42,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
       var jsonData = json.decode(response.body);
       for (var article in jsonData['articles']) {
         NewsData news = NewsData(
-          article['title'],
-          article['description'],
-          article['url'],
-          article['urlToImage'],
+          article['title'] ?? 'untitle',
+          article['description'] ?? '--',
+          article['url'] ?? '--',
+          article['urlToImage'] ?? '--',
         );
         data.add(news);
       }
@@ -84,9 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class NewsData {
-  final String title;
-  final String description;
-  final String url;
-  final String urlToImage;
+  final String? title;
+  final String? description;
+  final String? url;
+  final String? urlToImage;
   NewsData(this.title, this.description, this.url, this.urlToImage);
 }
