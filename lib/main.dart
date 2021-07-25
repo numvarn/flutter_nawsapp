@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Thailand news api'),
     );
   }
 }
@@ -64,10 +64,37 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshort) {
           if (snapshort.hasData) {
             return ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return Text("${data[index].title}");
-                });
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Card(
+                          child: Image.network('${data[index].urlToImage}'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            child: Column(children: [
+                              Text(
+                                '${data[index].title}',
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              Text('${data[index].description}'),
+                            ]),
+                          ),
+                        ),
+                        Divider(),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
           } else {
             return Center(
               child: Column(
