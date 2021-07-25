@@ -50,36 +50,36 @@ class _MyHomePageState extends State<MyHomePage> {
         data.add(news);
       }
     }
-
     return response.statusCode.toString();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: FutureBuilder(
-          future: _getData(),
-          builder: (context, snapshort) {
-            if (snapshort.hasData) {
-              return ListView.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    return Text("${data[index].title}");
-                  });
-            } else {
-              return Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircularProgressIndicator(),
-                    ]),
-              );
-            }
-          },
-        ));
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: FutureBuilder(
+        future: _getData(),
+        builder: (context, snapshort) {
+          if (snapshort.hasData) {
+            return ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return Text("${data[index].title}");
+                });
+          } else {
+            return Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                  ]),
+            );
+          }
+        },
+      ),
+    );
   }
 }
 
